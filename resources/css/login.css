@@ -1,0 +1,32 @@
+.root {
+    -fx-Marine-Green: #636b3f;
+    -fx-Deep-Green: #2b361c;
+    -fx-Barium-Yellow: #fefae3;
+    -fx-Sepia-E37: #d4a369;
+    -fx-Leather: #b17036;
+}
+
+.pane-background {
+    -fx-background-color: -fx-Marine-Green;
+}
+
+.aura-pane {
+    -fx-background-color: transparent;
+}
+
+.label {
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: -fx-Deep-Green;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-background-color: -fx-Deep-Green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
