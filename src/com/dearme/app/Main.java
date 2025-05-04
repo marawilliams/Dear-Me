@@ -1,59 +1,47 @@
-// Main.java
 package com.dearme.app;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.Pane;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.util.Random;
 
 public class Main extends Application {
+
+    private static final double SCENE_WIDTH = 1250;
+    private static final double SCENE_HEIGHT = 750;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dearme/view/log-in.fxml"));
-        Parent root = loader.load();
+        StackPane root = loader.load();
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
 
-        // Create animated aura backgroun// Add aura behind main UI
+        // Create aura background pane
+        Pane auraPane = new Pane();
+        auraPane.setMouseTransparent(true);
+        auraPane.getStyleClass().add("aura-pane");
+
+        // Create one large blurred circle centered on screen
+        Circle aura = new Circle(500);
+        aura.setFill(Color.web("rgba(99, 107, 63,0.25)"));
+        aura.setEffect(new GaussianBlur(62));
+        aura.setLayoutX(SCENE_WIDTH / 2);
+        aura.setLayoutY(SCENE_HEIGHT / 2);
+
+        auraPane.getChildren().add(aura);
+        root.getChildren().add(0, auraPane); // behind main UI
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Dear Me - Login");
         primaryStage.setResizable(false);
         primaryStage.show();
-    }
-
-    private void animateAura(Circle aura) {
-        Random rand = new Random();
-
-        Timeline randomMotion = new Timeline(
-                new KeyFrame(Duration.ZERO, e -> {
-                    double offsetX = rand.nextDouble() * 400 - 200; // ±200
-                    double offsetY = rand.nextDouble() * 300 - 150;
-
-                    KeyValue kvX = new KeyValue(aura.translateXProperty(), offsetX);
-                    KeyValue kvY = new KeyValue(aura.translateYProperty(), offsetY);
-                    KeyFrame kf = new KeyFrame(Duration.seconds(4), kvX, kvY);
-
-                    Timeline move = new Timeline(kf);
-                    move.play();
-                }),
-                new KeyFrame(Duration.seconds(4))
-        );
-
-        randomMotion.setCycleCount(Animation.INDEFINITE);
-        randomMotion.play();
     }
 
     public static void main(String[] args) {
