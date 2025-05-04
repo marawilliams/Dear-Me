@@ -22,27 +22,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dearme/view/log-in.fxml"));
         Parent root = loader.load();
-        StackPane stack = (StackPane) root;
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
 
-        // Create animated aura background
-        Pane auraPane = new Pane();
-        auraPane.setMouseTransparent(true); // So it doesn't block UI interaction
-        auraPane.getStyleClass().add("aura-pane");
-
-        for (int i = 0; i < 3; i++) {
-            Circle aura = new Circle(200);
-            aura.setFill(Color.web("rgba(255,100,200,0.15)"));
-            aura.setEffect(new DropShadow(100, Color.web("#ff64c8")));
-            aura.setLayoutX(600);
-            aura.setLayoutY(375);
-            animateAura(aura);
-            auraPane.getChildren().add(aura);
-        }
-
-        stack.getChildren().add(0, auraPane); // Add aura behind main UI
+        // Create animated aura backgroun// Add aura behind main UI
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Dear Me - Login");
