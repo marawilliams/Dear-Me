@@ -22,7 +22,10 @@
 }
 
 .pane-background {
-    -fx-background-color: -fx-Marine-Green;
+    -fx-background-image: url("../images/background.png"); /* path relative to your CSS file */
+    -fx-background-size: cover; /* or contain, or a size like 100% 100% */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
 }
 
 .aura-pane {
@@ -46,7 +49,10 @@
 
 
 .button {
-    -fx-background-color: -fx-Deep-Green;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-background-size: cover; /* or 100% 100% */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent; /* remove color underneath */
+    -fx-border-color: transparent;
+    -fx-padding: 0;
 }

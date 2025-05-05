@@ -1,62 +1,31 @@
-// Main.java
 package com.dearme.app;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.util.Random;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Font loaded = Font.loadFont(getClass().getResource("/fonts/Ramisland.otf").toExternalForm(), 16);
-        Font loaded2 = Font.loadFont(getClass().getResource("/fonts/Sand_Dunes.otf").toExternalForm(), 16);
+        // Load custom fonts
+        Font.loadFont(getClass().getResource("/fonts/Ramisland.otf").toExternalForm(), 16);
+        Font.loadFont(getClass().getResource("/fonts/Sand_Dunes.otf").toExternalForm(), 16);
+
+        // Load FXML and apply stylesheet
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dearme/view/log-in.fxml"));
         Parent root = loader.load();
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
 
-        // Create animated aura backgroun// Add aura behind main UI
-
-        primaryStage.setScene(scene);
+        // Set up the stage
         primaryStage.setTitle("Dear Me - Login");
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-    }
-
-    private void animateAura(Circle aura) {
-        Random rand = new Random();
-
-        Timeline randomMotion = new Timeline(
-                new KeyFrame(Duration.ZERO, e -> {
-                    double offsetX = rand.nextDouble() * 400 - 200; // ±200
-                    double offsetY = rand.nextDouble() * 300 - 150;
-
-                    KeyValue kvX = new KeyValue(aura.translateXProperty(), offsetX);
-                    KeyValue kvY = new KeyValue(aura.translateYProperty(), offsetY);
-                    KeyFrame kf = new KeyFrame(Duration.seconds(4), kvX, kvY);
-
-                    Timeline move = new Timeline(kf);
-                    move.play();
-                }),
-                new KeyFrame(Duration.seconds(4))
-        );
-
-        randomMotion.setCycleCount(Animation.INDEFINITE);
-        randomMotion.play();
     }
 
     public static void main(String[] args) {

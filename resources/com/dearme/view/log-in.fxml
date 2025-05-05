@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <StackPane fx:controller="com.dearme.controller.loginController"
            xmlns="http://javafx.com/javafx/23.0.1"
            xmlns:fx="http://javafx.com/fxml/1"
@@ -24,7 +26,14 @@
             <Font size="30.0" />
          </font>
       </TextField>
-      <Button layoutX="865.0" layoutY="386.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0"
-              text="→" fx:id="submitButton" styleClass="button"/>
+      <Button onAction="#handleSubmit" layoutX="1160.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" fx:id="submitButton" styleClass="button" >
+      <graphic>
+         <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+            <image>
+               <Image url="@../../../images/star.png" />
+            </image>
+         </ImageView>
+      </graphic>
+      </Button>
    </Pane>
 </StackPane>
