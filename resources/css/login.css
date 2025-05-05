@@ -22,10 +22,7 @@
 }
 
 .pane-background {
-    -fx-background-image: url("../images/background.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-    -fx-background-position: center;
+    -fx-background-color: -fx-Marine-Green;
 }
 
 .aura-pane {
