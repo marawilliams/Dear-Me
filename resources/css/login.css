@@ -6,6 +6,21 @@
     -fx-Leather: #b17036;
 }
 
+@font-face {
+    font-family: "Riety";
+    src: url("../fonts/Riety.ttf");
+}
+
+@font-face {
+    font-family: "Ramisland";
+    src: url("../fonts/Ramisland.otf");
+}
+
+@font-face {
+    font-family: "Sand Dunes";
+    src: url("../fonts/Sand_Dunes.otf");
+}
+
 .pane-background {
     -fx-background-image: url("../images/background.png");
     -fx-background-repeat: no-repeat;
@@ -18,15 +33,20 @@
 }
 
 .label {
-    -fx-font-family: "Segoe UI";
+    -fx-font-family: "Ramisland";
+    -fx-font-size: 50px;
     -fx-text-fill: -fx-Deep-Green;
 }
 
 .text-field {
+    -fx-font-family: "Sand Dunes";
     -fx-background-color: transparent;
-    -fx-font-size: 18px;
+    -fx-font-size: 50px;
     -fx-alignment: center;
+    -fx-highlight-fill: rgba(99, 107, 63, 0.25S);
+    -fx-highlight-text-fill: -fx-Barium-Yellow;
 }
+
 
 .button {
     -fx-background-color: -fx-Deep-Green;

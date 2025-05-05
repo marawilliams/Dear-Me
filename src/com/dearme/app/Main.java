@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -17,6 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Font loaded = Font.loadFont(getClass().getResource("/fonts/Ramisland.otf").toExternalForm(), 16);
+        Font loaded2 = Font.loadFont(getClass().getResource("/fonts/Sand_Dunes.otf").toExternalForm(), 16);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dearme/view/log-in.fxml"));
         StackPane root = loader.load();
 
