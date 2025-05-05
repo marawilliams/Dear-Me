@@ -49,7 +49,5 @@
 
 
 .button {
-    -fx-background-color: -fx-Deep-Green;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+    -fx-background-color: transparent;
 }
