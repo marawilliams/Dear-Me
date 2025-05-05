@@ -43,7 +43,7 @@
     -fx-background-color: transparent;
     -fx-font-size: 50px;
     -fx-alignment: center;
-    -fx-highlight-fill: rgba(99, 107, 63, 0.25S);
+    -fx-highlight-fill: rgba(99, 107, 63, 0.25);
     -fx-highlight-text-fill: -fx-Barium-Yellow;
 }
 
