@@ -26,7 +26,7 @@
             <Font size="30.0" />
          </font>
       </TextField>
-      <Button onAction="#handleSubmit" layoutX="1160.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" fx:id="submitButton" styleClass="button" >
+      <Button onAction="#handleExit" layoutX="1160.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" fx:id="submitButton" styleClass="button" >
       <graphic>
          <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
             <image>

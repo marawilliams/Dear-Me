@@ -27,4 +27,9 @@ public class loginController {
 
         // Additional logic (e.g. switch scene) goes here
     }
+
+    @FXML
+    private void handleExit(ActionEvent event) {
+        System.exit(0);
+    }
 }
