@@ -15,7 +15,12 @@
            styleClass="pane-background"
            prefHeight="750.0" prefWidth="1250.0">
    <Pane fx:id="contentPane">
-      <Label layoutX="394.0" layoutY="250.0" text="Hi! What's your name?" styleClass="label">
+      <Label fx:id= "title" layoutX="394.0" layoutY="250.0" text="Hi! What's your name?" styleClass="label">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id= "welcomeLabel" layoutX="394.0" layoutY="275.0" text="welcome" style="-fx-alignment: center" styleClass="label">
          <font>
             <Font size="50.0" />
          </font>
