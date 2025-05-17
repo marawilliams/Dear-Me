@@ -1,0 +1,62 @@
+.root {
+    -fx-Marine-Green: #636b3f;
+    -fx-Deep-Green: #2b361c;
+    -fx-Barium-Yellow: #fefae3;
+    -fx-Sepia-E37: #d4a369;
+    -fx-Leather: #b17036;
+}
+
+@font-face {
+    font-family: "Riety";
+    src: url("../fonts/Riety.ttf");
+}
+
+@font-face {
+    font-family: "Ramisland";
+    src: url("../fonts/Ramisland.otf");
+}
+
+@font-face {
+    font-family: "Sand Dunes";
+    src: url("../fonts/Sand_Dunes.otf");
+}
+
+@font-face {
+    font-family: "always forever";
+    src: url("../fonts/always_forever.ttf");
+}
+
+.pane-background {
+    -fx-background-image: url("../images/background.png"); /* path relative to your CSS file */
+    -fx-background-size: cover; /* or contain, or a size like 100% 100% */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.aura-pane {
+    -fx-background-color: transparent;
+}
+
+.label {
+    -fx-font-family: "Ramisland";
+    -fx-text-fill: -fx-Deep-Green;
+}
+
+.text-field {
+    -fx-font-family: "Sand Dunes";
+    -fx-background-color: transparent;
+    -fx-font-size: 50px;
+    -fx-alignment: center;
+    -fx-highlight-fill: rgba(99, 107, 63, 0.25);
+    -fx-highlight-text-fill: -fx-Barium-Yellow;
+}
+
+
+.button {
+    -fx-background-size: cover; /* or 100% 100% */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent; /* remove color underneath */
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}

@@ -26,17 +26,17 @@
             <Font size="30.0" />
          </font>
       </TextField>
-      <Label layoutX="394.0" layoutY="100.0" prefHeight="40.0" prefWidth="475.0"
-                 fx:id="errorField"  style="-fx-text-fill: #5d6437; -fx-alignment: center; -fx-font-family: 'always forever';">
+      <Label layoutX="394.0" layoutY="200.0" prefHeight="40.0" prefWidth="475.0"
+                 fx:id="errorField"  style="-fx-text-fill: #5d6437; -fx-alignment: center; -fx-font-family: 'always * forever';">
          <font>
-            <Font size="30.0" />
+            <Font size="50.0" />
          </font>
       </Label>
       <Button onAction="#handleExit" layoutX="1160.0" layoutY="20.0" mnemonicParsing="false" prefHeight="60.0" fx:id="submitButton" styleClass="button" >
       <graphic>
          <ImageView fx:id="buttonImage" fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
             <image>
-               <Image url="@../../../images/star.png" />
+               <Image url="@/images/star.png" />
             </image>
          </ImageView>
       </graphic>
