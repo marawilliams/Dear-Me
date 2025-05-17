@@ -21,6 +21,11 @@
     src: url("../fonts/Sand_Dunes.otf");
 }
 
+@font-face {
+    font-family: "always forever";
+    src: url("../fonts/always forever.ttf");
+}
+
 .pane-background {
     -fx-background-image: url("../images/background.png"); /* path relative to your CSS file */
     -fx-background-size: cover; /* or contain, or a size like 100% 100% */
@@ -34,7 +39,6 @@
 
 .label {
     -fx-font-family: "Ramisland";
-    -fx-font-size: 50px;
     -fx-text-fill: -fx-Deep-Green;
 }
 

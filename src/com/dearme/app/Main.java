@@ -14,6 +14,7 @@ public class Main extends Application {
         // Load custom fonts
         Font.loadFont(getClass().getResource("/fonts/Ramisland.otf").toExternalForm(), 16);
         Font.loadFont(getClass().getResource("/fonts/Sand_Dunes.otf").toExternalForm(), 16);
+        Font.loadFont(getClass().getResource("/fonts/always forever.ttf").toExternalForm(), 16);
 
         // Load FXML and apply stylesheet
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dearme/view/log-in.fxml"));
