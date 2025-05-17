@@ -20,11 +20,17 @@
             <Font size="50.0" />
          </font>
       </Label>
-      <Label fx:id= "welcomeLabel" layoutX="394.0" layoutY="275.0" text="welcome" style="-fx-alignment: center" styleClass="label">
+      <Label fx:id="welcomeLabel"
+             layoutX="425.0"
+             layoutY="250.0"
+             prefWidth="400.0"
+             alignment="CENTER"
+             styleClass="label">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
+
       <TextField layoutX="403.0" layoutY="350.0" prefHeight="40.0" prefWidth="438.0"
                  fx:id="nameField" styleClass="text-field">
          <font>

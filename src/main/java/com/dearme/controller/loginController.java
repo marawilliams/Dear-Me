@@ -1,9 +1,10 @@
 // LoginController.java
 package com.dearme.controller;
+
 import com.dearme.util.NameStore;
 
-
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,6 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class loginController {
 
@@ -36,17 +41,18 @@ public class loginController {
 
     @FXML
     private void initialize() {
-        // Run after FXML loads
         nameField.setOnAction(event -> handleSubmit(event));
         Image normal = new Image(getClass().getResource("/images/star.png").toExternalForm());
         Image inverted = new Image(getClass().getResource("/images/starlight.png").toExternalForm());
 
         submitButton.setOnMouseEntered(e -> buttonImage.setImage(inverted));
         submitButton.setOnMouseExited(e -> buttonImage.setImage(normal));
+
         welcomeLabel.setDisable(true);
         welcomeLabel.setVisible(false);
-
+        welcomeLabel.setOpacity(0);
     }
+
 
     @FXML
     private void handleSubmit(ActionEvent event) {
@@ -55,35 +61,63 @@ public class loginController {
             System.out.println("invalid name");
             errorField.setVisible(true);
             errorField.setText("Name cannot be empty");
-        }
-        else{
-            String inputName = nameField.getText();
-            NameStore.setName(inputName);
+        } else {
+            NameStore.setName(name);
             System.out.println("Submit clicked or Enter pressed. Name = " + name);
-            handleFadeOut();
-            //change scene to welcome "Name"
+            handleFadeOut(name);
         }
-
-        // Additional logic (e.g. switch scene) goes here
-    }
-    public void handleFadeOut() {
-        fadeOutAndDisable(nameField, 1.5);    // fade out in 1.5 seconds
-        fadeOutAndDisable(errorField, 1.5);
-        fadeOutAndDisable(title, 1.5);
     }
 
-    public void fadeOutAndDisable(Node node, double durationSeconds) {
+    private static final List<String> GREETINGS = Arrays.asList(
+            "Hello", "Howdy", "Hey", "Hiya", "Welcome back",
+            "Greetings", "Nice to see you", "Have a nice day today", "hi hi"
+    );
+
+    public static String getRandomGreeting(String name) {
+        String greeting = GREETINGS.get(new Random().nextInt(GREETINGS.size()));
+        return greeting + ", " + name + "!";
+    }
+
+
+    private void generateGreeting(String name) {
+        String greeting = getRandomGreeting(name);
+        welcomeLabel.setText(greeting);
+        welcomeLabel.setDisable(false);
+        welcomeLabel.setVisible(true);
+
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.0), welcomeLabel);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
+    }
+
+    public void handleFadeOut(String name) {
+        FadeTransition fade1 = createFadeTransition(nameField, 1.5);
+        FadeTransition fade2 = createFadeTransition(errorField, 1.5);
+        FadeTransition fade3 = createFadeTransition(title, 1.5);
+
+        // After the last element fades out, fade in the welcome label
+        fade3.setOnFinished(e -> {
+            PauseTransition pause = new PauseTransition(Duration.seconds(1.5)); // Pause duration
+            pause.setOnFinished(event -> generateGreeting(name));
+            pause.play();
+        });
+        fade1.play();
+        fade2.play();
+        fade3.play();
+    }
+
+    private FadeTransition createFadeTransition(Node node, double durationSeconds) {
         FadeTransition fade = new FadeTransition(Duration.seconds(durationSeconds), node);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
-        fade.setOnFinished(e -> node.setDisable(true)); // or node.setVisible(false)
-        fade.play();
+        fade.setOnFinished(event -> node.setDisable(true));
+        return fade;
     }
-
 
     @FXML
     private void handleExit(ActionEvent event) {
-        handleFadeOut();
+        handleFadeOut("Guest");
         System.exit(0);
     }
 }
