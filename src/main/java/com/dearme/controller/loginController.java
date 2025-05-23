@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.util.Arrays;
@@ -41,22 +42,38 @@ public class loginController {
 
     @FXML
     private void initialize() {
-        nameField.setOnAction(event -> handleSubmit(event));
-        Image normal = new Image(getClass().getResource("/images/star.png").toExternalForm());
-        Image inverted = new Image(getClass().getResource("/images/starlight.png").toExternalForm());
+        String name = NameStore.getName();
+        if(name == null){
+            nameField.setOnAction(event -> handleSubmit(event));
+            Image normal = new Image(getClass().getResource("/images/star.png").toExternalForm());
+            Image inverted = new Image(getClass().getResource("/images/starlight.png").toExternalForm());
 
-        submitButton.setOnMouseEntered(e -> buttonImage.setImage(inverted));
-        submitButton.setOnMouseExited(e -> buttonImage.setImage(normal));
+            submitButton.setOnMouseEntered(e -> buttonImage.setImage(inverted));
+            submitButton.setOnMouseExited(e -> buttonImage.setImage(normal));
 
-        welcomeLabel.setDisable(true);
-        welcomeLabel.setVisible(false);
-        welcomeLabel.setOpacity(0);
+            welcomeLabel.setDisable(true);
+            welcomeLabel.setVisible(false);
+            welcomeLabel.setOpacity(0);
+        }
+        else{
+            generateGreeting(name);
+            welcomeLabel.setDisable(false);
+            welcomeLabel.setVisible(true);
+            welcomeLabel.setOpacity(1);
+            Image normal = new Image(getClass().getResource("/images/star.png").toExternalForm());
+            Image inverted = new Image(getClass().getResource("/images/starlight.png").toExternalForm());
+
+            submitButton.setOnMouseEntered(e -> buttonImage.setImage(inverted));
+            submitButton.setOnMouseExited(e -> buttonImage.setImage(normal));
+
+        }
+
     }
 
 
     @FXML
     private void handleSubmit(ActionEvent event) {
-        String name = nameField.getText();
+        String name = nameField.getText().toLowerCase();
         if (name.trim().equals("")) {
             System.out.println("invalid name");
             errorField.setVisible(true);
@@ -69,8 +86,7 @@ public class loginController {
     }
 
     private static final List<String> GREETINGS = Arrays.asList(
-            "Hello", "Howdy", "Hey", "Hiya", "Welcome back",
-            "Greetings", "Nice to see you", "Have a nice day today", "hi hi"
+            "hi hi", "what's up", "yoooooooo", "hope you're vibing today", "you look GORGEOUS", "you kewl"
     );
 
     public static String getRandomGreeting(String name) {
@@ -80,7 +96,9 @@ public class loginController {
 
 
     private void generateGreeting(String name) {
+        Font customFont = Font.loadFont(getClass().getResource("/fonts/always_forever.ttf").toExternalForm(), 24);
         String greeting = getRandomGreeting(name);
+        welcomeLabel.setFont(Font.font(customFont.getFamily(), 60));
         welcomeLabel.setText(greeting);
         welcomeLabel.setDisable(false);
         welcomeLabel.setVisible(true);
